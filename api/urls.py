@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^decode_geokey/$', DecodeView.as_view(), name='decode_geokey'),
     url(r'^geokeys/(?P<pk>[0-9]+)/$', csrf_exempt(UserGeoKeysViewSet.as_view({'get': 'retrieve', 'put':'update', 'delete':'destroy'})), name='user_geokey'),
     url(r'^geokeys/$', csrf_exempt(UserGeoKeysViewSet.as_view({'get': 'list', 'post':'create'})), name='user_geokeys'),
-    url(r'oauth2/', include('social_django.urls', namespace='social')),
+ #   url(r'oauth2/', include('social_django.urls', namespace='social')),
     # don't use login as name, it clashes with our other login view.
     url(r'^login/$', auth_views.login, name='api_login'),
 ]

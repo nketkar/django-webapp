@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','127.0.0.1','54.235.229.15']
 
 
 # Application definition
@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'honeypot',
     'argonauts',
     'rest_framework',
-    'social_django',
+#    'social_django',
 
     'rest_framework.authtoken',
 
@@ -92,8 +92,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 #OAuth
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+#                'social_django.context_processors.backends',
+#                'social_django.context_processors.login_redirect',
             ],
         },
     },

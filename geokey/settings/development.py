@@ -1,8 +1,8 @@
 import os
 
-from base import BASE_DIR
+from .base import BASE_DIR
 
-ALLOWED_HOSTS = ['localhost', 'geokey.loc', 'app.geokey.loc', 'www.geokey.loc']
+ALLOWED_HOSTS = ['127.0.0.1','54.235.229.15','*','localhost', 'geokey.loc', 'app.geokey.loc', 'www.geokey.loc']
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
