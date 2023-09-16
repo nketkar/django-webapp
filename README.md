@@ -1,6 +1,3 @@
-## THE GEOKEY SERVICE
-
-A few instructions on setting up the project for local development.
 
 ### Installation:
 
