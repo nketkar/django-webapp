@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -219,3 +219,6 @@ HONEYPOT_FIELD_NAME = 'town'
 MAX_GEOKEYS_FOR_FREE_ACCOUNT = 100
 
 DEFAULT_FROM_EMAIL = 'smdye@outlook.com'
+
+SECRET_KEY = '5ipy4%ju1o%v!v%)47gdt2vd=3a_e0-*=fh4+dk@on_3+!d5c%'
+DEBUG = True

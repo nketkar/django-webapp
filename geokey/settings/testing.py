@@ -1,4 +1,5 @@
-from .import *  # noqa
+#from .import *  # noqa
+from settings import *
 
 DEBUG = True
 
