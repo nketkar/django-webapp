@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Share a GeoKey{% endblock %}
+
+{% block content %}
+    <div class="alert alert-success mt-3">
+        <h3>{{ geo_key }}</h3>
+    </div>
+    <div>
+       <a href='{{open_link}}'>Open the GeoKey in mobile app</a>
+   </div>
+{% endblock %}

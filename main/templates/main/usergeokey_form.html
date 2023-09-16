@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags assets %}
+
+{% block title %}GeoKey {{ block.super }}{% endblock title %}
+
+{% block content %}
+    <div class="mt-3">
+        {% crispy form %}
+    </div>
+{% endblock content %}
+{% block extrascripts %}
+{% assets "geokey_js" %}
+    <script src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% endblock extrascripts %}

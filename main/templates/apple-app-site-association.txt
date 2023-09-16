@@ -1,0 +1,16 @@
+{
+  "activitycontinuation": {
+    "apps": [
+      "FVJJG64985.com.igorkravtsov.GeoKey"
+    ]
+  },
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "FVJJG64985.com.igorkravtsov.GeoKey",
+                "paths": [ "/share/*" ]
+            }
+        ]
+    }
+}

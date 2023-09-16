@@ -1,0 +1,183 @@
+from geokey import encoder
+from geokey import transcounter
+
+
+keyDict = {'public' : [0, 1, 2, 3, 4, 5, 6, 7]}
+
+def is_valid(num, rmin, rmax):
+    try:
+        x = float(num)
+        if x >= rmin and x <= rmax:
+            return True
+        else: return False
+    except ValueError:
+        return False
+
+class EncodeAddressView(object):
+    def __init__(self):
+        None
+
+##
+    def encodeGeoKeyFromAddress(self, address, keyset=None):
+
+        response = {}
+
+        # error out if the address is not present
+        if address == None:
+            response = {"Status": "Failure", "Failure Mode": "A valid address must be present."}
+            return response
+
+        # error out if key set is not valid
+        if keyset != None:
+          if keyset.lower() != "public" and keyset.lower() not in keyDict.keys():
+            response =  {"Status": "Failure", "Failure Mode": "A valid keyset must be set beforehand."}
+            return response
+        else: keyset="public"
+
+
+        response = {"Easy Code": "GANK ISMA -DUO JOPP", "Latitude": 38.95312, "Longitude": -77.45654}
+        return response
+
+class DecodeView(object):
+    def __init__(self):
+        None
+
+##
+    def decodeGeoKey(self, easycode, keyset=None):
+
+        response = {}
+
+        if easycode == None:
+            response = {"Status": "Failure", "Failure Mode": "Geokey must be present."}
+            return response
+
+        if keyset != None:
+          if keyset.lower() != "public" and keyset.lower() not in keyDict.keys():
+            response = {"Status": "Failure", "Failure Mode": "A valid keyset must be set beforehand."}
+            return response
+        else: keyset="public"
+
+
+
+        response = {"Latitude": 38.95312, "Longitude": -77.45654, "Reversed Address": "45020 Aviation Dr, Chantilly, VA 20151, USA"}
+        return response
+
+
+class EncodePositionView(object):
+    def __init__(self):
+        None
+
+
+##
+    def encodeGeoKeyFromPosition(self, lat, lon, keyset = None):
+
+        response = {}
+
+        if lat == None:
+            response = {"Status": "Failure", "Failure Mode": "Latitude must be present."}
+            return response
+
+        if lon == None:
+            response = {"Status": "Failure", "Failure Mode": "Longitude must be present."}
+            return response
+
+        if is_valid(lat, -90, 90) == False:
+            response = {"Status": "Failure", "Failure Mode": "The latitude value must be between -90 and 90."}
+            return response
+
+        if is_valid(lon, -180, 180) == False:
+            response = {"Status": "Failure", "Failure Mode": "The longitude value must be between -180 and 180."}
+            return response
+
+        if keyset != None:
+          if keyset.lower() != "public" and keyset.lower() not in keyDict.keys():
+            response = {"Status": "Failure", "Failure Mode": "A valid keyset must be set beforehand."}
+            return response
+        else: keyset="public"
+
+
+        response = {"Easy Code": "GANK ISMA -DUO JOPP", "Latitude": 38.95312, "Longitude": -77.45654}
+
+        return response
+
+class PrivateKeyset(object):
+    def __init__(self):
+        None
+
+
+    def handleLookupMode(self, lookup_mode):
+        if lookup_mode.lower() != "public" and lookup_mode.lower() not in keyDict.keys():
+            # generate new key since the lookupMode does not exist in the dict
+            keyDict[lookup_mode.lower()] = encoder.generateKey()
+        return lookup_mode.lower()
+
+##
+    def setPrivateKeyset(self, keysetID):
+
+        if keysetID == None:
+            response = {"Status": "Failure", "Failure Mode": "KeysetID must be present."}
+        else: keysetID = keysetID.lower()
+
+        if keysetID == "public":
+            response = {"Status": "Failure", "Failure Mode": "KeysetID value of public is reserved.  Use another value."}
+        elif keysetID == "":
+            response = {"Status": "Failure", "Failure Mode": "KeysetID value of blank cannot be used."}
+        elif keysetID in keyDict.keys():
+            response = {"Status": "Failure", "Failure Mode": "KeysetID is already in use.  Use another keysetID."}
+        else:
+            response = self.handleLookupMode(keysetID)
+
+        return response
+
+
+
+class Keyset(object):
+    def __init__(self):
+        None
+
+
+    def getAllKeysets(self):
+
+        #clientKey = request.GET.get("clientkey")
+        #if clientKey == None or clientKey != ADMINGUID:
+        #    response = Response(("A valid Admin Client Key must be present. Only Admin Keys are authorized to set new keysets."), status=status.HTTP_200_OK)
+        #    return response
+
+        response = {"Keys": keyDict.keys()}
+
+        return response
+
+
+# main code
+if __name__ == "__main__":
+    e = EncodeAddressView();
+    d = e.encodeGeoKeyFromAddress("6514 Beverly avenue, McLean, VA 22101");
+    print d
+
+    f = DecodeView()
+    d = f.decodeGeoKey(d['Easy Code'])
+    print d
+
+    g = EncodePositionView()
+    d = g.encodeGeoKeyFromPosition(d['Latitude'], d['Longitude'])
+    print d
+
+    h = PrivateKeyset()
+    h.setPrivateKeyset('Boom')
+
+    i = Keyset();
+    d = i.getAllKeysets()
+
+    print d
+
+    e = EncodeAddressView();
+    d = e.encodeGeoKeyFromAddress("6514 Beverly avenue, McLean, VA 22101", "boom");
+    print d
+
+    f = DecodeView()
+    d = f.decodeGeoKey(d['Easy Code'], "boom")
+    print d
+
+    g = EncodePositionView()
+    d = g.encodeGeoKeyFromPosition(d['Latitude'], d['Longitude'], "boom")
+    print d

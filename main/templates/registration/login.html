@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Login {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row h-100 mt-5 justify-content-center align-items-center">
+            <div id="login-form" class="col-lg-6">
+                <ul class="list-group">
+                    <li class="list-group-item login-header"><h4 class="text-center">Sign in</h4></li>
+                    <li class="list-group-item">
+                        <form class="form" method="post">
+                            {% crispy form %}
+                            <input type="submit" name="save" value="Sign in" class="btn btn-primary btn-lg offset-md-4" id="submit-id-save">
+                        </form>
+                    </li>
+                    <li class="list-group-item">Not yet registered? Sign up with your email <a href="{% url 'register' %}">here</a></li>
+                    <li class="list-group-item">Forgot password? Click <a href="{% url 'password_reset' %}">here</a> to get help.</li>
+                    <li class="list-group-item">
+                        <div class="card align-items-center" style="width: 100%">
+                            <ul class="list-group list-group-flush align-items-stretch">
+                                <li class="list-group-item text-center">
+                                    <a href="{% url "social:begin" "google-oauth2" %}">
+                                        <button type="button" class="btn btn-primary btn-lg google-login">Sign in with Google</button>
+                                    </a>
+                                </li>
+                                <li class="list-group-item text-center">
+                                    <a href="{% url "social:begin" "facebook" %}">
+                                        <button type="button" class="btn btn-primary btn-lg facebook-login">Sign in with Facebook</button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

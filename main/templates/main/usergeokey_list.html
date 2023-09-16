@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Saved searches {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Saved searches</h2>
+    <p>
+        <a class="btn btn-primary btn-sm m-1" href="{% url 'user_searches' %}?page={{ page_obj.number }}">View on map</a>
+        <a class="btn btn-primary btn-sm m-1" href="{% url 'user_searches_csv' %}">Download as CSV</a>
+        <a class="btn btn-primary btn-sm m-1" href="{% url 'user_searches_excel' %}">Download as Excel spreadsheet</a>
+        {% if geokeys %}
+            <a class="btn btn-danger btn-sm m-1" href="{% url 'usergeokey_delete_all' %}">Delete all saved geokeys</a>
+        {% endif %}
+    </p>
+    {% if geokeys %}
+        <table class="table table-striped table-sm table-bordered table-responsive">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Geokey</th>
+                    <th>Co-ordinates</th>
+                    <th>Address</th>
+                    <th>Date added</th>
+                    <th>Nickname</th>
+                    <th>Delete</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for geokey in  geokeys %}
+                <tr>
+                    <th scope="row"><small>{{ page_obj.start_index|add:forloop.counter0 }}</small></th>
+                    <td><a href="{% url 'usergeokey_update' pk=geokey.pk %}"><small>{{ geokey.geokey }}</small></a></td>
+                    <td><small>{{ geokey.position.latitude|floatformat:5 }}, {{ geokey.position.longitude|floatformat:5 }}</small></td>
+                    <td><small>{{ geokey.address }}</small></td>
+                    <td><small>{{ geokey.created }}</small></td>
+                    <td><small>{{ geokey.nickname|default:"-" }}</small></td>
+                    <td><a class="btn btn-danger btn-sm" href="{% url 'usergeokey_delete' pk=geokey.pk %}"><small>Delete</small></a></td>
+                    <td><a class="btn btn-info btn-sm" href="{% url 'email_usergeokey' geokey=geokey.geokey %}">Email</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% include "main/partials/pagination.html" %}
+    {% else %}
+        <p>There are no saved geokeys to display. Click on the Home link to save a new geokey.</p>
+    {% endif %}
+{% endblock %}
+{% block extrascripts %}
+    <script type="text/javascript">
+        // Hide the success messages after a while
+        $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+            $(this).slideUp(500);
+        });
+    </script>
+{% endblock extrascripts %}

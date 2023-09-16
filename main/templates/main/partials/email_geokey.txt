@@ -1,0 +1,11 @@
+Hi,
+
+{% firstof user.full_name user.email %} has shared his/her GeoKey with you. Click on the link below to see where s/he is.
+
+{% if  share_current %}
+    {{ scheme }}://{{ site }}{% url "mobile_usergeokey" %}?geokey={{ geokey }}
+{% else %}
+    {{ scheme }}://{{ site }}{% url "usergeokey" %}?geokey={{ geokey }}
+{% endif %}
+
+Best regards.

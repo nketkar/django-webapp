@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block top_nav %}{% endblock top_nav %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-lg-2">
+            <div class="d-none d-sm-inline">
+                <nav class="sidebar-nav">
+                    <ul class="nav flex-column">
+                        {% include "main/partials/nav.html" %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            {% block main_content %}
+            {% endblock main_content %}
+        </div>
+    </div>
+</div>
+{% endblock %}

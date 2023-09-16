@@ -1,0 +1,10 @@
+<p>Hi,</p>
+
+{% firstof user.full_name user.email %} has shared his/her GeoKey with you.
+{% if  share_current %}
+    Click <a href="{{ scheme }}://{{ site }}{% url 'mobile_usergeokey' %}?geokey={{ geokey }}">here</a> to see where s/he is.
+{% else %}
+    Click <a href="{{ scheme }}://{{ site }}{% url 'usergeokey' %}?geokey={{ geokey }}">here</a> to see where s/he is.
+{% endif %}
+
+<p>Best regards.</p>

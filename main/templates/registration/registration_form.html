@@ -1,0 +1,19 @@
+{% extends "2-col.html"%}
+
+{% load crispy_forms_tags honeypot %}
+
+{% block title %}Register {{ block.super }}{% endblock %}
+
+{% block main_content %}
+    <div class="row h-100 justify-content-center">
+        <div id="login-form" class="col-md-6">
+            <h2 class="text-center">User registration</h2>
+            <hr>
+            <p>Please supply your email below to register</p>
+           <form method="post">
+           		{% crispy form %}
+                {% render_honeypot_field %}
+           </form>
+        </div>
+    </div>
+{% endblock %}

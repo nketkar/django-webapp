@@ -1,0 +1,14 @@
+{% extends "2-col.html" %}
+
+{% load crispy_forms_tags  %}
+{% block title %}Confirm delete {{ block.super }}{% endblock %}
+
+{% block main_content %}
+    <div class="alert alert-danger mt-3" role="alert">
+        <form method="POST">
+            {% csrf_token %}
+            <p>You are about to delete all your saved geokeys. Proceed?</p>
+            <input class="btn btn-danger" type="submit" value="Confirm" />
+        </form>
+    </div>
+{% endblock %}

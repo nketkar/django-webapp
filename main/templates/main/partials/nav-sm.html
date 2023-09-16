@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light" id="nav-sm">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="https://www.geokey.io">Home</a>
+        </li>
+        <li class="nav-item {% if request.path == 'm/geokey/' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'mobile_usergeokey' %}">Geokey</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item {% if '/geokeys/' in request.path %} active {% endif %}">
+            <a class="nav-link" href="{% url 'usergeokeys' %}">Saved searches</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item {% if '/register/' in request.path %} active {% endif %}">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item {% if '/login/' in request.path %} active {% endif %}">
+            <a class="nav-link" href="{% url 'login' %}">Sign in</a>
+        </li>
+        {% endif %}
+   </ul>
+  </div>
+</nav>

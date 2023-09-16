@@ -1,0 +1,13 @@
+*.pyc
+*.db
+*.sqlite3
+node_modules
+local.py
+/static
+/main/static
+/media
+.coverage
+.cache
+.env
+htmlcov
+.vscode

@@ -1,0 +1,19 @@
+{
+  "name": "geokey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9",
+    "font-awesome": "^4.7.0"
+  },
+  "scripts": {
+    "assets-jquery": "cp node_modules/jquery/dist/jquery.min.js main/static/js/jquery.min.js",
+    "assets-popperjs": "cp node_modules/popper.js/dist/umd/popper.js main/static/js/",
+    "assets-font-awesome": "cp -r node_modules/font-awesome/fonts/* main/static/fonts/ && cp -r node_modules/font-awesome/scss/* main/static/scss/font-awesome",
+    "assets-bootstrap": "cp -r node_modules/bootstrap/scss/* main/static/scss/bootstrap && cp -r node_modules/bootstrap/js/dist/*[.js$] main/static/js/bootstrap",
+    "assets": "npm run assets-bootstrap && npm run assets-jquery && npm run assets-popperjs && npm run assets-font-awesome"
+  }
+}

@@ -1,0 +1,10 @@
+{% extends '2-col.html' %}
+
+{% block title %}Please subscribe {{ block.super }}{% endblock %}
+
+{% block main_content %}
+    <div class="mt-3 alert alert-info" role="alert">
+        <p>You have used all geokeys available for a free account.</p>
+        <p>Please subscribe to continue using this service.</p>
+    </div>
+{% endblock %}

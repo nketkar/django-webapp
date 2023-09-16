@@ -1,0 +1,18 @@
+{% extends '2-col.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Activate account | {{ block.super }}{% endblock %}
+
+{% block main_content %}
+    <h4 class="mb-3">Please enter the details below to sign up</h4>
+    <form class="activation-form" method="post">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success"><h4>Personal details</h4></li>
+            <li class="list-group-item">
+                {% crispy form %}
+                 <p class="text-danger">Fields with an asterisk(*) are required feilds.</p>
+                 <input type="submit" name="save" value="Save and activate account" class="offset-md-3 btn btn-primary btn-lg">
+            </li>
+        </ul>
+    </form>
+{% endblock %}

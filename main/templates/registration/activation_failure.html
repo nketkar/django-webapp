@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Activation failure {{ block.super }}{% endblock %}
+
+{% block content %}
+    <p class="text-danger">Sorry, your account could not be activated.</p>
+    <p>The link might have expired or it has already been used. You can try to register again.</p>
+{% endblock content %}

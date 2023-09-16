@@ -1,0 +1,21 @@
+<li class="nav-item">
+    <a class="nav-link" href="https://www.geokey.io/">Home</a>
+</li>
+<li class="nav-item {% if request.path == 'geokey/' %} active {% endif %}">
+    <a class="nav-link" href="{% url 'usergeokey' %}">Geokey</a>
+</li>
+{% if request.user.is_authenticated %}
+<li class="nav-item {% if '/geokeys/' in request.path %} active {% endif %}">
+    <a class="nav-link" href="{% url 'usergeokeys' %}">Saved searches</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+{% else %}
+<li class="nav-item {% if '/register/' in request.path %} active {% endif %}">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+<li class="nav-item {% if '/login/' in request.path %} active {% endif %}">
+    <a class="nav-link" href="{% url 'login' %}">Sign in</a>
+</li>
+{% endif %}

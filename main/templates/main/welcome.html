@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home {{ block.super }}{% endblock %}
+
+{% block top_nav %}{% endblock top_nav %}
+{% block mobile_nav %}{% endblock mobile_nav %}
+{% block content %}
+<div class="container">
+    <div class="row mb-5 mt-3">
+        <div id="welcome-info" class="mt-4 alert alert-info" role="alert">
+            <p class="header-text">The new PlanetXY homepage is at: <a class="text-info" href="https://www.geokey.io">geokey.io</a>
+        </div>
+        </p>
+    </div>
+</div>
+{% endblock content %}

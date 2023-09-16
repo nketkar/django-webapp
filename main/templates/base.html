@@ -1,0 +1,50 @@
+{% load assets geokey_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <title>{% block title %} | Geokey {% endblock title %}</title>
+    {% assets "core_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+     {% endassets %}
+     {% include "main/partials/gtag.html" %}
+</head>
+<body>
+    {% block scripts %}
+    {% assets "core_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% endblock scripts %}
+    <header>
+        <div class="container">
+            <div class="brand">
+                <h2><a href="/">Geokey Service</a></h2>
+            </div>
+            {% block top_nav %}
+            <div class="d-none d-sm-inline">
+                <nav class="nav">
+                    {% include "main/partials/nav.html" %}
+                </nav>
+            </div>
+            {% endblock top_nav %}
+            {% block mobile_nav %}
+            <div class="d-sm-none">
+                {% include "main/partials/nav-sm.html" %}
+            </div>
+            {% endblock mobile_nav %}
+        </div>
+    </header>
+
+    <div class="container">
+        {% block messages %}
+            {% include "main/partials/messages.html" %}
+        {% endblock messages %}
+        {% block content %}
+        {% endblock content %}
+    </div>
+    {% block extrascripts %}{% endblock extrascripts %}
+</body>
+</html>
