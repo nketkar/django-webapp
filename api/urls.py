@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
+#from django.conf.urls import urls
 from django.contrib.auth import views as auth_views
 from django.views.decorators.csrf import csrf_exempt
 
@@ -23,9 +24,9 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='api_login'),
 ]
 
-#  Facebook login: https://app.geokey.io/api/oauth2/login/facebook/
-#  Google login: https://app.geokey.io/api/oauth2/login/google-oauth2/?next=SOCIAL_LOGIN_REDIRECT_URL
-#  http://localhost:8000/api/oauth2/login/google-oauth2/?next=SOCIAL_LOGIN_REDIRECT_URL
+ # Facebook login: https://app.geokey.io/api/oauth2/login/facebook/
+ # Google login: https://app.geokey.io/api/oauth2/login/google-oauth2/?next=SOCIAL_LOGIN_REDIRECT_URL
+ # http://localhost:8000/api/oauth2/login/google-oauth2/?next=SOCIAL_LOGIN_REDIRECT_URL
 #
 # """
 # curl 'http://localhost:8000/api/profile/' \
@@ -40,9 +41,7 @@ urlpatterns = [
 # -H 'Accept: application/json' \
 # -H 'Cookie: sessionid=wbeyzxlpk7ko7sers53vxzf23lbiqpns'
 
-# curl 'http://localhost:8000/api/decode_geokey/?geokey=HOOV%20NADA%20AIRN%20NADA' \
-# -H 'Accept: application/json' \
-# -H 'Cookie: sessionid=wbeyzxlpk7ko7sers53vxzf23lbiqpns'
+# curl 'http://localhost:8000/api/decode_geokey/?geokey=HOOV%20NADA%20AIRN%20NADA'  -H 'Accept: application/json'  -H 'Cookie: sessionid=wbeyzxlpk7ko7sers53vxzf23lbiqpns'
 
 #Create user geokey
 #curl 'http://localhost:8000/api/geokeys/'  -H 'Accept: application/json'  -H 'Cookie: sessionid=juapcidaac5oehiygnmgsrpicf36inrw' -X POST -d '{"geokey":"AAAA BBBB", "nickname":"Home"}' -H "Content-Type: application/json"

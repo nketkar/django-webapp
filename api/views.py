@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProfileView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+#    permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, format=None):
         serializer = UserSerializer(request.user)
@@ -26,7 +26,7 @@ class ProfileView(APIView):
 
 
 class AuthCompleteView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+#    permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, format=None):
         from rest_framework.authtoken.models import Token
@@ -45,7 +45,7 @@ class UserGeoKeySerializer(serializers.ModelSerializer):
 
 
 class UserGeoKeysViewSet(ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
+#    permission_classes = (permissions.IsAuthenticated,)
 
     serializer_class = UserGeoKeySerializer
 

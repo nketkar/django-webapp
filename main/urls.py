@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
-
+from django.contrib import admin
 from harness import EncodeAddressView, DecodeView, EncodePositionView, PrivateKeyset
 
 from . import views
