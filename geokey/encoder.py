@@ -94,10 +94,11 @@ def isEasyLocateCode(input_str):
     p = re.compile("[a-zA-Z-][a-zA-Z-][a-zA-Z-][a-zA-Z-]$")
 
     l = input_str.split()
+    
     if len(l) == 4: 
         if p.match(l[0])  and p.match(l[1]) and p.match(l[2])  and p.match(l[3]): 
             return True, l
-
+    
     return False, []
 
 def encode(lat, lon, theKey=PUBLIC_KEY): 
