@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM --platform=linux/amd64 python:2.7
 
 
 # Set the working directory
@@ -11,8 +11,8 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Expose the port your Django app runs on (e.g., 8000)
-EXPOSE 8001
+EXPOSE 8000
 
 # Start your Django application
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

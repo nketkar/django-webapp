@@ -10,6 +10,7 @@ from harness import DecodeView, EncodePositionView
 #  Routers provide a way of automatically determining the URL conf.
 #  router = routers.DefaultRouter()
 #   router.register(r'users', UserViewSet)
+# some new comment
 
 
 urlpatterns = [
