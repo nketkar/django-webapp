@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
+    'django-webapp.middleware.UUIDValidateMiddleware',
 ]
 
 REST_FRAMEWORK = {
